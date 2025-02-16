@@ -1,0 +1,12 @@
+// EXO : Mettre en place la route de modification des livres 
+        // Etapes : 
+            // 1 - Créer la route de modification qui prends en param un id d'un livre 
+            // 2 - Mettre en place la methode modifier, ne pas oublier toutes les injections de dépendances...
+                // Une dépendance qui gère les requêtes action
+                // Une dépendance qui gère les informations reçues du formulaire
+                // Une dépendance qui gère les requêtes de selection sur la table 
+            // 3 - Dans cette méthode, récupérer les informations (le livre) qui correspond à cet id
+            // 4 - Rattacher "ce livre" au formulaire auto généré (LivreType)
+            // 5 - Créer la condition de modification ou pas 
+            // 6 - flush -> redirection  
+            // "Indice" : Pas besoin de nouveau template twig

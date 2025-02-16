@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<ul>
+    <li>Jour : {{tableau["jour"]}}</li>
+    <li>Mois : {{tableau.mois}}</li>
+    <li>Année : {{tableau.annee}}</li>
+</ul>
+
+
+<ul>
+    <li>{{tableau2[0]}}</li>
+    <li>{{tableau2.1}}</li>
+    <li>{{tableau2.2}}</li>
+</ul>
+
+
+{% for i in 0..2 %}
+
+    {{tableau2[i]}}
+    
+{% endfor %}
+
+<ul>
+{% for item in tableau %}
+    <li>{{item}}</li>
+{% endfor %}
+
+{% for indice,valeur in tableau %}
+    <li>{{indice}} : {{valeur}}</li>
+{% endfor %}
+
+</ul>
+
+{% if nombre < 2 %}
+    <p>Le nombre est inferieur à 2</p>
+{% elseif nombre < 10%}
+    <p>le nombre est compris entre 2 et 9</p>
+{% else %}
+    <p>le nombre est superieur ou egale a 10</p>
+
+
+{% endif %}
+
+{% if chaine is defined %}
+    <h3>{{chaine}}</h3>
+{% endif %}
+
+
+
+
+
+{% endblock %}

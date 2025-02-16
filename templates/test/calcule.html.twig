@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+
+    
+
+    <p>si le nombre 1 est : {{nombre1}} et si le nombre 2 est {{nombre2}} </p>
+    <p>le resultat de l'addition des 2 parametres est : {{nombre1 + nombre2}}</p>
+    <p>le resultat de la soustraction des 2 parametres est : {{nombre1 - nombre2}} </p>
+    <p>le resultat de la multiplication des 2 parametres est : {{nombre1 * nombre2}} </p>
+    {% if nombre2 != 0 %}<p>le resultat de la division du parametre 1 par le deuxieme est :{{nombre1 / nombre2}} </p>
+    {% else %} <p>la division par zero est impossible ! gros naze !</p>
+    {% endif %}    
+
+{% endblock %}

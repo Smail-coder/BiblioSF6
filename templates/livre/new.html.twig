@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-add-book">
+                <div class="card bg-dark text-white">
+                    <div class="card-header">
+                        <h2 class="text-center">Ajouter un livre</h2>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(formLivre) }}
+                            <div class="mb-3">
+                                {{ form_label(formLivre.titre) }}
+                                {{ form_widget(formLivre.titre) }}
+                                {{ form_errors(formLivre.titre) }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_label(formLivre.auteur) }}
+                                {{ form_widget(formLivre.auteur) }}
+                                {{ form_errors(formLivre.auteur) }}
+                            </div>
+
+                            <div class="text-center">
+                                {{ form_widget(formLivre.enregistrer, {'attr': {'class': 'btn btn-warning'}}) }}
+                            </div>
+                        {{ form_end(formLivre) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

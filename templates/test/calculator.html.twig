@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+
+    
+
+    <h1>Entrez deux nombres</h1>
+
+    <form method="get" action="{{ path('app_calculator') }}">
+        <label for="nombre1">Nombre 1 :</label>
+        <input type="number" name="nombre1" id="nombre1" value="{{ nombre1 }}" required>
+
+        <label for="nombre2">Nombre 2 :</label>
+        <input type="number" name="nombre2" id="nombre2" value="{{ nombre2 }}" required>
+
+        <button type="submit">Calculer</button>
+    </form>
+
+    {% if nombre1 is not empty and nombre2 is not empty %}
+        <h2>Résultat : {{ nombre1 }} + {{ nombre2 }} = {{ somme }}</h2>
+        <h2>Résultat : {{ nombre1 }} - {{ nombre2 }} = {{ soustraction }}</h2>
+        <h2>Résultat : {{ nombre1 }} * {{ nombre2 }} = {{ multiplication }}</h2>
+        {% if nombre2 != 0 %}<h2>Résultat : {{ nombre1 }} + {{ nombre2 }} = {{ division }}</h2>{% endif %}
+         
+    {% endif %}  
+
+{% endblock %}

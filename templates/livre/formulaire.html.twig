@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4 rounded gothic-card">
+            <h2 class="text-center mb-4 secondtitle">
+                {% if livre is defined %}Modifier{% else %}Ajouter{% endif %} un Livre
+            </h2>
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="titre" class="form-label gothic-label">Titre</label>
+                    <input type="text" class="form-control gothic-input" id="titre" name="titre"
+                           placeholder="Entrez le titre du livre"
+                           value="{{ livre.titre is defined ? livre.titre : '' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="auteur" class="form-label gothic-label">Auteur</label>
+                    <input type="text" class="form-control gothic-input" id="auteur" name="auteur"
+                           placeholder="Entrez le nom de l'auteur"
+                           value="{{ livre.auteur is defined ? livre.auteur : '' }}" required>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a href="{{ path('app_livre') }}" class="btn gothic-btn-primary">Retour à la liste</a>
+                    <button type="submit" class="btn gothic-btn">
+                        {% if livre is defined %}Mettre à jour{% else %}Enregistrer un livre{% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

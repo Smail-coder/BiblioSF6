@@ -1,0 +1,295 @@
+/* Conteneur Flexbox pour les cartes */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Permet d'aller sur plusieurs lignes quand les cartes débordent */
+    justify-content: space-around; /* Espacement entre les cartes */
+    margin: 0 auto; /* Centration globale */
+  }
+  
+  /* Style pour les colonnes */
+  .col-md-4 {
+    display: flex;
+    justify-content: center; /* Centre les cartes à l'intérieur des colonnes */
+    margin-bottom: 20px; /* Ajoute un espacement vertical */
+  }
+  
+  /* Style pour les cartes */
+  .card {
+    flex: 0 1 18rem; /* Largeur minimale de 18rem */
+    max-width: 100%; /* Empêche les débordements */
+    margin: 10px; /* Espacement entre les cartes */
+    background: linear-gradient(to bottom, #f8f4e9, #eae3d0);
+    border: 2px solid #c4a962; /* Bordure dorée */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(196, 169, 98, 0.5); /* Ombre dorée subtile */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  /* Effet hover sur les cartes */
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 8px rgba(196, 169, 98, 0.7);
+  }
+  
+  /* Décoration avant la carte (bordure externe dorée subtile) */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #c4a962, #ffd700, #c4a962);
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 0.3;
+  }
+  
+  /* Images des cartes */
+  .card-img-top {
+    width: 100%; /* S'adapte à la largeur de la carte */
+    height: 140px; /* Hauteur fixe pour uniformité */
+    object-fit: cover; /* Evite la déformation des images */
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid #c4a962;
+  }
+  
+  /* Titre de la carte */
+  .card-title {
+    color: #2c1810;
+    font-family: "Old Standard TT", serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  /* Texte dans la carte */
+  .card-text {
+    color: #5c4033;
+    font-size: 0.9rem;
+    text-align: center;
+    font-style: italic;
+  }
+  
+  /* Bouton dans les cartes */
+  .btn-primary {
+    display: block; /* Centre le bouton horizontalement */
+    margin: 10px auto; /* Espacement en bas */
+    background: linear-gradient(45deg, #8b0000, #ff0000);
+    border: 1px solid #8b0000;
+    color: #fff;
+    font-family: "Old Standard TT", serif;
+    transition: all 0.3s ease;
+    width: 80%;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(45deg, #ff0000, #8b0000);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+  }
+  
+  /* Corps de la carte */
+  .card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Corps principal de la page */
+  body {
+    background-image: url("/img/wallbook.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Old Standard TT", serif;
+  }
+  
+  /* Overlay sombre sur le fond */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Ajuster l'opacité en modifiant la dernière valeur */
+    z-index: -1;
+  }
+  
+  .form-control {
+    border: 1px solid #666;
+}
+
+.form-control:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+    background-color: #2b2b2b !important;
+    color: white !important;
+}
+
+.card {
+    border: 1px solid #666;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.form-label {
+    color: #ffd700;
+}
+
+.invalid-feedback {
+    color: #ff6b6b;
+}
+
+
+
+  /* Style gothique pour les titres */
+  .gothic-title {
+    font-family: "Cinzel", cursive;
+    font-size: 4rem; /* Grande taille */
+    color: rgb(226, 186, 9); /* Rouge sang */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Ombre ajoutant du dramatique */
+    text-transform: uppercase; /* Tout en majuscules */
+    font-weight: bold;
+  }
+  
+  .gothic-col-title {
+    color: #8b0000;
+    text-transform: uppercase; /* Tout en majuscules */
+    font-weight: bold;
+  }
+  
+  /* Footer stylé */
+  .footer {
+    background-color: #1e1e1e; /* Fond sombre */
+    color: #e0e0e0; /* Texte clair */
+    padding: 40px 0;
+    text-align: center;
+    font-family: "Cinzel", cursive; /* Police gothique */
+    border-top: 2px solid #8b0000; /* Bordure dramatique */
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.8);
+  }
+  
+  .footer a {
+    color: #8b0000; /* Rouge sang */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s;
+  }
+  
+  .footer a:hover {
+    color: #f21fd6; /* Légère brillance */
+  }
+  
+  /* Réseaux sociaux */
+  .footer .social-links {
+    margin-top: 20px;
+  }
+  
+  .footer .social-links a {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  
+  .footer .social-links a:hover {
+    color: #f21fd6; /* Change couleur au survol */
+  }
+  
+
+
+/* Styles spécifiques pour le formulaire */
+.form-add-book {
+    background: rgba(0, 0, 0, 0.8);
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid #c4a962;
+    box-shadow: 0 0 20px rgba(196, 169, 98, 0.3);
+}
+
+.form-add-book .card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.form-add-book .card-header {
+    background: transparent;
+    border-bottom: 1px solid #c4a962;
+    padding: 15px;
+}
+
+.form-add-book .card-header h2 {
+    font-family: "Cinzel", cursive;
+    color: #ffd700;
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+}
+
+.form-add-book .card-body {
+    padding: 25px;
+    background: transparent;
+}
+
+.form-add-book .form-control {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 1px solid #c4a962 !important;
+    color: #ffffff !important;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-add-book .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25) !important;
+}
+
+.form-add-book label {
+    color: #ffd700 !important;
+    font-family: "Cinzel", cursive;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.form-add-book .btn-submit {
+    background: linear-gradient(45deg, #8b0000, #ff0000);
+    border: 1px solid #8b0000;
+    color: #fff;
+    padding: 10px 25px;
+    font-family: "Old Standard TT", serif;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    width: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+.form-add-book .btn-submit:hover {
+    background: linear-gradient(45deg, #ff0000, #8b0000);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
+}
+
+.form-add-book .invalid-feedback {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-family: "Old Standard TT", serif;
+}
+
+
