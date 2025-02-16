@@ -122,6 +122,87 @@
     z-index: -1;
   }
   
+/* Style pour la navbar sombre et classe */
+/* Correction et amélioration pour la navbar sombre */
+
+/* Style pour une navbar plus sombre */
+.custom-navbar {
+  background-color: #2c3e50 !important; /* Couleur sombre personnalisée */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Ligne subtile en bas */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Ajoute une ombre subtile sous la navbar */
+}
+
+/* Logo personnalisé pour se démarquer */
+.custom-navbar .navbar-brand {
+  font-size: 1.5rem;
+  color: #f1c40f !important; /* Couleur dorée pour le logo */
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.custom-navbar .navbar-brand:hover {
+  color: #d4ac0d !important; /* Logo légèrement plus sombre au survol */
+}
+
+/* Liens de navigation */
+.custom-navbar .nav-link {
+  color: #ecf0f1 !important; /* Texte légèrement gris clair */
+  font-weight: 400;
+  font-family: Arial, sans-serif;
+  transition: color 0.3s ease-in-out;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #3498db !important; /* Texte bleu clair au survol */
+}
+
+/* Dropdown menu */
+.custom-dropdown-menu {
+  background-color: #34495e !important; /* Fond légèrement plus clair pour le menu déroulant */
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ajout d’ombre au menu déroulant */
+  border-radius: 5px; /* Bords arrondis pour un style élégant */
+}
+
+.custom-dropdown-menu .dropdown-item {
+  color: #ecf0f1 !important; /* Texte clair */
+  font-family: Arial, sans-serif; /* Harmonie dans les polices */
+}
+
+.custom-dropdown-menu .dropdown-item:hover {
+  background-color: #2c3e50 !important; /* Fond sombre au survol */
+  color: #3498db !important; /* Texte bleu clair au survol */
+  border-radius: 3px;
+}
+
+/* Formulaire de recherche */
+.custom-search-input {
+  background-color: #3c3c3c !important; /* Fond sombre pour champ de recherche */
+  border: 1px solid #ecf0f1 !important; /* Bordure claire */
+  color: #ecf0f1 !important; /* Texte clair */
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* Placeholder subtil */
+  font-style: italic; /* Texte placeholder en italique */
+}
+
+/* Bouton de recherche */
+.custom-navbar .btn-outline-light {
+  border: 1px solid #ecf0f1;
+  color: #ecf0f1;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.custom-navbar .btn-outline-light:hover {
+  background-color: #3498db !important; /* Fond bleu clair au survol */
+  color: #fff !important; /* Texte blanc */
+}
+
+
   .form-control {
     border: 1px solid #666;
 }
@@ -292,4 +373,7 @@
     font-family: "Old Standard TT", serif;
 }
 
+h2.secondtitle {
+  color: #c4a962 !important; /* Forcer la priorité */
+}
 
