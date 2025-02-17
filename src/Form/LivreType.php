@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Livre;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -10,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class LivreType extends AbstractType
 {
@@ -41,6 +43,12 @@ class LivreType extends AbstractType
                     "label" => "Nom de l'auteur"
                 ]
             )
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
+                'choice_label' => 'nom',
+                'label' => 'Catégorie du livre',
+                'placeholder' => 'Choisissez une catégorie'
+            ])
             ->add(
                 "enregistrer",
                 SubmitType::class,
@@ -60,3 +68,4 @@ class LivreType extends AbstractType
         ]);
     }
 }
+

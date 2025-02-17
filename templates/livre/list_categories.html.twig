@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    
+    <h2 class="mb-4" style="color: #ffd700 !important; font-weight: bold;">Nos Catégories</h2>
+    
+    <div class="row">
+        {% for categorie in categories %}
+            <div class="col-md-4 mb-4">
+                <div class="category-card" style="background-image: url('{{ asset('img/' ~ categorie.nom|lower|replace({' ': '', 'é': 'e'}) ~ '.jpg') }}')">
+                    <div class="category-overlay">
+                        <h3 class="category-title">{{ categorie.nom }}</h3>
+                        <p class="category-count">
+                            {% if categorie.livres|length == 1 %}
+                                {{ categorie.livres|length }} livre
+                            {% else %}
+                                {{ categorie.livres|length }} livres
+                            {% endif %}
+                        </p>
+                        <a href="{{ path('app_livre_par_categorie', {'id': categorie.id}) }}" 
+                           class="btn btn-custom">
+                            Voir les livres
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.category-card {
+    width: 100% !important; /* Ajout de cette ligne */
+    height: 250px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 10px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: 2px solid #c4a962 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.3s ease !important;
+    display: block !important; /* Ajout de cette ligne */
+}
+
+.col-md-4 {
+    padding: 15px !important; /* Ajout de cette ligne */
+}
+
+.category-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+.category-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 1.5rem !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.category-card:hover .category-overlay {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+.category-title {
+    font-family: "Old Standard TT", serif !important;
+    color: #ffd700 !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.category-count {
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+    font-style: italic !important;
+    margin-bottom: 1.5rem !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.btn-custom {
+    background: linear-gradient(45deg, #8b0000, #ff0000) !important;
+    color: white !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 5px !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(45deg, #ff0000, #8b0000) !important;
+    color: white !important;
+    text-decoration: none !important;
+    transform: scale(1.05) !important;
+}
+
+.gothic-title {
+    font-family: "Cinzel", cursive !important;
+    font-size: 3rem !important;
+    color: #ffd700 !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7) !important;
+    margin-bottom: 2rem !important;
+}
+
+@media (max-width: 768px) {
+    .category-card {
+        height: 200px !important;
+    }
+    
+    .category-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .category-count {
+        font-size: 1rem !important;
+    }
+    
+    .gothic-title {
+        font-size: 2.5rem !important;
+    }
+}
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+

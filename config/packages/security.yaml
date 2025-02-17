@@ -32,4 +32,6 @@ security:
         - { path: ^/livre$, roles: ROLE_ADMIN }
         - { path: ^/livre/ajouter, roles: ROLE_ADMIN }
         - { path: ^/livre/supprimer, roles: ROLE_ADMIN }
+        - { path: ^/admin/abonne, roles: ROLE_ADMIN }
+       
 

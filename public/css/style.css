@@ -377,3 +377,25 @@ h2.secondtitle {
   color: #c4a962 !important; /* Forcer la priorité */
 }
 
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: #f8f9fa;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.roles-container {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.roles-container label {
+  margin-right: 15px;
+}
+
+.roles-container input[type="checkbox"] {
+  margin-right: 5px;
+}

@@ -1,0 +1,41 @@
+<div class="form-container bg-light p-4 rounded shadow">
+    <h2 class="text-dark mb-4">Création d'un compte</h2>
+    
+    {{ form_start(form, {'attr': {'class': 'mx-auto'}}) }}
+        <div class="mb-3">
+            {{ form_label(form.pseudo, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+            {{ form_widget(form.pseudo, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.nom, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.prenom, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.email, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.password, null, {'label_attr': {'class': 'form-label text-dark'}}) }}
+            {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.roles, 'Rôles', {'label_attr': {'class': 'form-label text-dark'}}) }}
+            <div class="roles-container text-dark">
+                {{ form_widget(form.roles) }}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary w-100">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    {{ form_end(form) }}
+</div>

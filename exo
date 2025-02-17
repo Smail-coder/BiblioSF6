@@ -10,3 +10,15 @@
             // 5 - Créer la condition de modification ou pas 
             // 6 - flush -> redirection  
             // "Indice" : Pas besoin de nouveau template twig
+
+
+
+            // EXERCICE 
+// Faire fonctionner le crud automatique Abonne
+// Bloquer l'accès à ce controller uniquement pour les admin et biblio
+// Enlever la lisibilité du password dans l'index et le show 
+// Corriger les erreurs m'empechant de faire un edit et un new abonné (réglage du form)
+// Plutôt que d'afficher ["ROLE_USER", "ROLE_ADMIN"], on aimerait plutôt afficher des mots simples
+    // ROLE_ADMIN => Directeur
+    // ROLE_BIBLIO => Bibliothécaire
+    // ROLE_USER / ROLE_LECTEUR => Lecteur

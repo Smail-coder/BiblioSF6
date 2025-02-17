@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Livre;
 use App\Form\LivreType;
+use App\Repository\CategorieRepository;
 use App\Repository\LivreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -162,4 +163,72 @@ public function modifier(Livre $livre, Request $request, EntityManagerInterface 
             'query' => $query
         ]);
     }
+
+    // gerer les catégories 
+    #[Route('/livre/categories', name: 'app_livre_categories')]
+public function attribuerCategories(
+    LivreRepository $livreRepo, 
+    CategorieRepository $categorieRepo, 
+    EntityManagerInterface $em, 
+    Request $request
+): Response
+{
+    $livres = $livreRepo->findAll();
+    $categories = $categorieRepo->findAll();
+    
+    if($request->isMethod('POST')) {
+        $categorieId = $request->request->get('categorie');
+        $livreId = $request->request->get('livre');
+        
+        $livre = $livreRepo->find($livreId);
+        $categorie = $categorieRepo->find($categorieId);
+        
+        if ($livre && $categorie) {
+            $livre->setCategorie($categorie);
+            $em->flush();
+            
+            $this->addFlash('success', 'Catégorie modifiée avec succès');
+        }
+        return $this->redirectToRoute('app_livre_categories');
+    }
+
+    return $this->render('livre/categories.html.twig', [
+        'livres' => $livres,
+        'categories' => $categories, // Passage des catégories au template
+    ]);
+}
+        // affichage de tous les livres d'une meme catégorie
+
+        #[Route('/livre/par-categorie/{id}', name: 'app_livre_par_categorie')]
+public function parCategorie(
+    $id,
+    CategorieRepository $categorieRepo,
+    LivreRepository $livreRepo
+): Response {
+    $categorie = $categorieRepo->find($id);
+    
+    if (!$categorie) {
+        throw $this->createNotFoundException('Catégorie non trouvée');
+    }
+    
+    $livres = $livreRepo->findBy(['categorie' => $categorie]);
+    
+    return $this->render('livre/par_categorie.html.twig', [
+        'categorie' => $categorie,
+        'livres' => $livres
+    ]);
+}
+
+
+// afficher toutes les categories 
+#[Route('/categories', name: 'app_categories')]
+public function listCategories(CategorieRepository $categorieRepo): Response
+{
+    $categories = $categorieRepo->findAll();
+    
+    return $this->render('livre/list_categories.html.twig', [
+        'categories' => $categories
+    ]);
+}
+
 }

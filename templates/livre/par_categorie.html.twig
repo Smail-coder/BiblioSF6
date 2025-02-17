@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livres - {{ categorie.nom }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Livres de la catégorie : {{ categorie.nom }}</h1>
+
+    {% if livres|length > 0 %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for livre in livres %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ livre.titre }}</h5>
+                            <p class="card-text">
+                                Par {{ livre.auteur }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Aucun livre n'est disponible dans cette catégorie.
+        </div>
+    {% endif %}
+
+    <a href="{{ path('app_categories') }}" class="btn btn-secondary mt-4">
+        Retour aux catégories
+    </a>
+</div>
+
+<style>
+.card {
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    text-align: center;
+    padding: 2rem;
+}
+
+.card-title {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+</style>
+{% endblock %}
+

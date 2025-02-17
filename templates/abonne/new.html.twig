@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Abonné{% endblock %}
+
+{% block body %}
+
+    {{ include('abonne/_form.html.twig') }}
+
+    <a href="{{ path('app_abonne_index') }}">revenir à la liste des abonnés</a>
+{% endblock %}
