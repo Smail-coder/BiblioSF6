@@ -15,17 +15,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[Route('/admin/abonne')]
 final class AbonneController extends AbstractController
 {
-    // Injection du service de hachage de mot de passe via le constructeur
-    public function __construct(
-        private UserPasswordHasherInterface $passwordHasher
-    ) {}
+    private UserPasswordHasherInterface $passwordHasher;
 
-    #[Route(name: 'app_abonne_index', methods: ['GET'])]
-    public function index(AbonneRepository $abonneRepository): Response
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        return $this->render('abonne/index.html.twig', [
-            'abonnes' => $abonneRepository->findAll(),
-        ]);
+        $this->passwordHasher = $passwordHasher;
     }
 
     #[Route('/new', name: 'app_abonne_new', methods: ['GET', 'POST'])]
@@ -36,10 +30,11 @@ final class AbonneController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Hachage du mot de passe avant la persistance
+            // Récupération et hachage du mot de passe
+            $plainPassword = $form->get('password')->getData();
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $abonne,
-                $abonne->getPassword()
+                $plainPassword
             );
             $abonne->setPassword($hashedPassword);
 
@@ -105,3 +100,4 @@ final class AbonneController extends AbstractController
         return $this->redirectToRoute('app_abonne_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+

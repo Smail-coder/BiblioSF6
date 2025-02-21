@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la catégorie{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="edit-card">
+                <div class="edit-header">
+                    <h1 class="edit-title">Modifier la catégorie</h1>
+                </div>
+                
+                <div class="edit-body">
+                    {{ include('categorie/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                </div>
+
+                <div class="edit-footer">
+                    <div class="button-group">
+                        <a href="{{ path('app_categorie_index') }}" class="btn btn-back">
+                            <i class="fas fa-arrow-left"></i> Retour à la liste
+                        </a>
+                        {{ include('categorie/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.edit-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+    padding: 2rem !important;
+    border: 2px solid #c4a962 !important;
+}
+
+.edit-header {
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 2px solid #c4a962 !important;
+}
+
+.edit-title {
+    font-family: "Old Standard TT", serif !important;
+    color: #2c3e50 !important;
+    font-size: 2.5rem !important;
+    margin: 0 !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.edit-body {
+    padding: 1rem 0 !important;
+}
+
+.edit-footer {
+    margin-top: 2rem !important;
+    padding-top: 1rem !important;
+    border-top: 1px solid rgba(196, 169, 98, 0.3) !important;
+}
+
+.button-group {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+/* Style pour le formulaire */
+form {
+    margin-bottom: 0 !important;
+}
+
+.form-group {
+    margin-bottom: 1.5rem !important;
+}
+
+.form-control {
+    border: 2px solid #dcd0b4 !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control:focus {
+    border-color: #c4a962 !important;
+    box-shadow: 0 0 0 0.2rem rgba(196, 169, 98, 0.25) !important;
+}
+
+/* Boutons */
+.btn {
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.btn-back {
+    background: linear-gradient(45deg, #2c3e50, #3498db) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-back:hover {
+    background: linear-gradient(45deg, #3498db, #2c3e50) !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-update {
+    background: linear-gradient(45deg, #27ae60, #2ecc71) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-update:hover {
+    background: linear-gradient(45deg, #2ecc71, #27ae60) !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-delete {
+    background: linear-gradient(45deg, #c0392b, #e74c3c) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .edit-card {
+        padding: 1.5rem !important;
+    }
+
+    .edit-title {
+        font-size: 2rem !important;
+    }
+
+    .button-group {
+        flex-direction: column !important;
+    }
+
+    .btn {
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+        justify-content: center !important;
+    }
+}
+</style>
+{% endblock %}
+

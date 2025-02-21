@@ -3,37 +3,90 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-<div class="container mt-4">
-    
-    <h2 class="mb-4" style="color: #ffd700 !important; font-weight: bold;">Nos Catégories</h2>
-    
-    <div class="row">
-        {% for categorie in categories %}
-            <div class="col-md-4 mb-4">
-                <div class="category-card" style="background-image: url('{{ asset('img/' ~ categorie.nom|lower|replace({' ': '', 'é': 'e'}) ~ '.jpg') }}')">
-                    <div class="category-overlay">
-                        <h3 class="category-title">{{ categorie.nom }}</h3>
-                        <p class="category-count">
-                            {% if categorie.livres|length == 1 %}
-                                {{ categorie.livres|length }} livre
-                            {% else %}
-                                {{ categorie.livres|length }} livres
-                            {% endif %}
-                        </p>
-                        <a href="{{ path('app_livre_par_categorie', {'id': categorie.id}) }}" 
-                           class="btn btn-custom">
-                            Voir les livres
-                        </a>
+ <div class="container">
+        <div class="row">
+            {% for categorie in categories %}
+                <div class="col-md-4 mb-4">
+                    <div class="category-card" style="background-image: url('{{ asset('img/' ~ categorie.nom|lower|replace({' ': '', 'é': 'e'}) ~ '.jpg') }}')">
+                        <div class="category-overlay">
+                            <h3 class="category-title">{{ categorie.nom }}</h3>
+                            <p class="category-count">
+                                {% if categorie.livres|length == 1 %}
+                                    {{ categorie.livres|length }} livre
+                                {% else %}
+                                    {{ categorie.livres|length }} livres
+                                {% endif %}
+                            </p>
+                            <div class="category-buttons">
+                                <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}" class="btn btn-view">
+                                    <i class="fas fa-book-open"></i> Voir les livres
+                                </a>
+                                <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-edit">
+                                    <i class="fas fa-edit"></i> Modifier
+                                </a>
+                                <form method="post" action="{{ path('app_categorie_delete', {'id': categorie.id}) }}" style="display: inline-block;"
+                                      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                                    <button class="btn btn-delete">
+                                        <i class="fas fa-trash-alt"></i> Supprimer
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 
 <style>
+.category-buttons {
+    position: absolute !important;
+    bottom: 20px !important;
+    display: flex !important;
+    gap: 10px !important;
+    justify-content: center !important;
+    width: 100% !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.category-card:hover .category-buttons {
+    opacity: 1 !important;
+}
+
+.btn-edit, .btn-delete, .btn-view {
+    padding: 8px 15px !important;
+    border-radius: 5px !important;
+    font-size: 0.9rem !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.btn-view {
+    background: linear-gradient(45deg, #2196F3, #1976D2) !important;
+    color: white !important;
+}
+
+.btn-edit {
+    background: linear-gradient(45deg, #4CAF50, #45a049) !important;
+    color: white !important;
+}
+
+.btn-delete {
+    background: linear-gradient(45deg, #f44336, #d32f2f) !important;
+    color: white !important;
+}
+
+.btn-edit:hover, .btn-delete:hover, .btn-view:hover {
+    transform: scale(1.05) !important;
+    color: white !important;
+}
+
 .category-card {
-    width: 100% !important; /* Ajout de cette ligne */
+    width: 100% !important;
     height: 250px !important;
     background-size: cover !important;
     background-position: center !important;
@@ -44,11 +97,11 @@
     border: 2px solid #c4a962 !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
     transition: transform 0.3s ease !important;
-    display: block !important; /* Ajout de cette ligne */
+    display: block !important;
 }
 
 .col-md-4 {
-    padding: 15px !important; /* Ajout de cette ligne */
+    padding: 15px !important;
 }
 
 .category-card:hover {
@@ -137,11 +190,3 @@
 }
 </style>
 {% endblock %}
-
-
-
-
-
-
-
-

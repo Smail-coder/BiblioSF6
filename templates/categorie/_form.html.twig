@@ -1,0 +1,13 @@
+{# templates/categorie/_form.html.twig #}
+{{ form_start(form, {'attr': {'class': 'edit-form'}}) }}
+    <div class="form-group">
+        {{ form_label(form.nom, 'Nom de la catégorie', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+    
+    <button class="btn btn-update">
+        <i class="fas fa-save"></i> {{ button_label|default('Enregistrer') }}
+    </button>
+{{ form_end(form) }}
+
